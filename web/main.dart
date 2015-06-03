@@ -4,7 +4,7 @@
 import 'dart:html';
 import 'package:react/react.dart';
 import 'package:react/react_client.dart' as reactClient;
-import 'package:react_bootstrap/react_bootstrap.dart' as react_bootstrap;
+import 'package:react_bootstrap/react_bootstrap.dart' as bs;
 
 main() {
   reactClient.setClientConfiguration();
@@ -30,16 +30,21 @@ class RootComponent extends Component {
 //    };
 //  }
 
+
+  void handleSelect(selectedKey, [b, c]) {
+    window.alert('selected ' + selectedKey);
+  }
+
   render() => div({}, [
     h1({"style": {"color": "red"}}, [ "DEMO"]),
 
 
     div({
       "style": {"padding": "10px"}
-    }, [react_bootstrap.Alert({'bsStyle': 'warning', }, div({}, "HELLO!")), ]),
+    }, [bs.Alert({'bsStyle': 'warning', }, div({}, "HELLO!")), ]),
     div({
       "style": {"padding": "10px"}
-    }, [react_bootstrap.Button({'bsStyle': 'primary', }, 'Primary')]),
+    }, [bs.Button({'bsStyle': 'primary', }, 'Primary')]),
 
 
 /*
@@ -57,20 +62,30 @@ class RootComponent extends Component {
     div({
       "style": {"padding": "10px"}
     },
-    react_bootstrap.ButtonToolbar({},
-    react_bootstrap.ButtonGroup({}, [
-      react_bootstrap.Button({}, react_bootstrap.Glyphicon({'glyph': 'align-left'})),
-      react_bootstrap.Button({}, react_bootstrap.Glyphicon({'glyph': 'align-center'})),
-      react_bootstrap.Button({}, react_bootstrap.Glyphicon({'glyph': 'align-right'})),
-      react_bootstrap.Button({}, react_bootstrap.Glyphicon({'glyph': 'align-justify'})),
+    bs.ButtonToolbar({},
+    bs.ButtonGroup({}, [
+      bs.Button({}, bs.Glyphicon({'glyph': 'align-left'})),
+      bs.Button({}, bs.Glyphicon({'glyph': 'align-center'})),
+      bs.Button({}, bs.Glyphicon({'glyph': 'align-right'})),
+      bs.Button({}, bs.Glyphicon({'glyph': 'align-justify'})),
     ]))),
-
     div({"style": {"padding": "10px"}}, [
-      react_bootstrap.Button(
-          {}, react_bootstrap.Glyphicon({'glyph': 'star', }, 'Star')),
+      bs.Button(
+          {}, bs.Glyphicon({'glyph': 'star', }, 'Star')),
     ]),
 
-
+    bs.Nav({'bsStyle': 'tabs', 'activeKey': 1, 'onSelect': this.handleSelect}, [
+      bs.NavItem({'eventKey': '1', 'href': '/home'}, 'NavItem 1 content'),
+      bs.NavItem({'eventKey': '2', 'title': 'Item', }, 'NavItem 2 content'),
+      bs.NavItem({'eventKey': '3', 'disabled': true}, 'NavItem 3 content'),
+      bs.DropdownButton({'eventKey': '4', 'title': 'Dropdown', 'navItem': true, 'onSelect': (a) => this.handleSelect(a, null, null)}, [
+        bs.MenuItem({'eventKey': '4.1'}, 'Action'),
+        bs.MenuItem({'eventKey': '4.2'}, 'Another action'),
+        bs.MenuItem({'eventKey': '4.3'}, 'Something else here'),
+        bs.MenuItem({'divider': true}),
+        bs.MenuItem({'eventKey': '4.4'}, 'Separated link')
+      ])]
+    )
 
   ]);
 }
