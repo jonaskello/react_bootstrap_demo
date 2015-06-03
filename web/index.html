@@ -20,11 +20,38 @@
 
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+
+
+
 </head>
 
 <body>
 
 <div id="content"></div>
+
+
+<script>
+
+  const glyphInstance = (
+      React.createElement("div", null,
+          React.createElement(ReactBootstrap.ButtonToolbar, null,
+              React.createElement(ReactBootstrap.ButtonGroup, null,
+                  React.createElement(ReactBootstrap.Button, null, React.createElement(ReactBootstrap.Glyphicon, {glyph: "align-left"})),
+                  React.createElement(ReactBootstrap.Button, null, React.createElement(ReactBootstrap.Glyphicon, {glyph: "align-center"})),
+                  React.createElement(ReactBootstrap.Button, null, React.createElement(ReactBootstrap.Glyphicon, {glyph: "align-right"})),
+                  React.createElement(ReactBootstrap.Button, null, React.createElement(ReactBootstrap.Glyphicon, {glyph: "align-justify"}))
+              )
+          )
+      )
+  );
+
+
+//  var x = document.getElementById("content");
+//  alert(x);
+//  React.render(glyphInstance, x);
+
+</script>
 
 </body>
 </html>
