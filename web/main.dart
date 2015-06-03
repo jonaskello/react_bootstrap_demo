@@ -10,10 +10,10 @@ main() {
 
   reactClient.setClientConfiguration();
 
-  var component = div({}, "Hello world!");
-  render(component, querySelector('#content'));
+//  var component = div({}, "Hello world!");
+//  render(component, querySelector('#content'));
 
-//  render(rootComponent({}), querySelector('#content'));
+  render(rootComponent({}), querySelector('#content'));
 
 }
 
@@ -23,36 +23,30 @@ class RootComponent extends Component {
 
   var colors = ['orange', 'red', 'blue', 'purple'];
 
-  getInitialState() {
-    return {
-      "dropdownListValue": colors[0],
-      "comboboxValue": colors[0],
-      "numberPickerValue": 5,
-      "multiselectValue": [colors[0], colors[2]],
-      "selectListValue": [colors[0]],
-    };
-  }
+//  getInitialState() {
+//    return {
+//      "dropdownListValue": colors[0],
+//      "comboboxValue": colors[0],
+//      "numberPickerValue": 5,
+//      "multiselectValue": [colors[0], colors[2]],
+//      "selectListValue": [colors[0]],
+//    };
+//  }
 
   render() =>
   div({}, [
     h1({"style": {"color": "red"}}, "DEMO"),
     div({"style": {"padding": "10px"}}, [
-      "DropdownList: ${this.state["dropdownListValue"]}",
       this.state["value"],
-      react_bootstrap.dropdownList({
-        "style": {"width": "200px"},
-        "data": colors,
-        "value": this.state["dropdownListValue"],
-        "onChange": (value) => this.setState({"dropdownListValue": value})
-      }),
+      react_bootstrap.Alert({
+        'bsStyle': 'warning',
+      }, div({}, "HELLO!")),
     ]),
     div({"style": {"padding": "10px"}}, [
-      "Combobox: ${this.state["comboboxValue"]}",
-      react_bootstrap.combobox({
-        "style": {"width": "200px"},
-        "data": colors,
-        "value": this.state["comboboxValue"],
-        "onChange": (value) => this.setState({"comboboxValue": value})}),
+      this.state["value"],
+      react_bootstrap.Button({
+        'bsStyle': 'primary',
+      }, "Primary"),
     ]),
     /*
     div({"style": {"padding": "10px"}}, [
@@ -65,33 +59,6 @@ class RootComponent extends Component {
         "onChange": (value) => this.setState({"numberPickerValue": value})}),
     ]),
     */
-    div({"style": {"padding": "10px"}}, [
-      "Multiselect: ${this.state["multiselectValue"]}",
-      react_bootstrap.multiselect({
-        "style": {"width": "200px"},
-        "data": colors,
-        "value": this.state["multiselectValue"],
-        "onChange": (value) => this.setState({"multiselectValue": value})}),
-    ]),
-    div({"style": {"padding": "10px"}}, [
-      "SelectList: ${this.state["selectListValue"]}",
-      react_bootstrap.selectList({
-        "style": {"width": "200px"},
-        "data": colors,
-        "value": this.state["selectListValue"],
-        "onChange": (value) => this.setState({"selectListValue": value})}),
-    ]),
-    /*
-    div({"style": {"padding": "10px"}}, [
-      "Calendar: ${this.state["calendarValue"]}",
-      widgets.calendar({
-        "style": {"width": "200px"},
-//        "headerFormat": (v, c) => v,
-        "parse": (v, c) => v,
-        "value": this.state["calendarValue"],
-        "onChange": (value) => this.setState({"calendarValue": value})}),
-    ]),
-        */
   ]);
 
 }
